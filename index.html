@@ -3,19 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Primera Web</title>
+    <title>Frutos Lex - Inicio</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
 <body>
 
-        <div class="contenedor">
-                <h1>Inventario FrutosLex 🌰</h1>
-                    <ul id="lista-productos" style="text-align: left;">
-                            Cargando datos...
-                                </ul>
-                                </div>
-                                <script src="script.js"></script>
+    <header class="site-header">
+        <div class="container header-content">
+            <button class="mobile-menu-btn" id="mobile-menu-btn"><span>&#9776;</span></button>
 
+            <nav class="nav-desktop nav-left">
+                <a href="#" class="nav-link">Nosotros</a>
+                <a href="#" class="nav-link">Productos</a>
+            </nav>
+
+            <div class="logo-container">
+                <img src="Iconos/logoHeader2.png" alt="Logo" class="logo-img">
+            </div>
+
+            <nav class="nav-desktop nav-right">
+                <a href="#" class="nav-link">Contáctanos</a>
+                <a href="#" class="nav-link">Novedades</a>
+            </nav>
+
+            <nav class="mobile-nav" id="mobile-nav">
+                <a href="#" class="nav-link">Nosotros</a>
+                <a href="#" class="nav-link">Productos</a>
+                <a href="#" class="nav-link">Contáctanos</a>
+                <a href="#" class="nav-link">Novedades</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="slider-container">
+            <div class="slider-wrapper">
+                <div class="slide active"><img src="Plantilla/carrusel02.png" alt="Banner 1"></div>
+                <div class="slide"><img src="Plantilla/carrusel04.jpg" alt="Banner 2"></div>
+                <div class="slide"><img src="Plantilla/carrusel01.png" alt="Banner 3"></div>
+            </div>
+            <button class="prev-btn" onclick="moveSlide(-1)">&#10094;</button>
+            <button class="next-btn" onclick="moveSlide(1)">&#10095;</button>
+            <div class="dots-container">
+                <span class="dot active" onclick="currentSlide(0)"></span>
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+            </div>
+        </section>
+
+        <section class="productos-3d-section">
+            <div class="titulo-seccion">
+                <h2><span class="resaltado-rojo">Descubre nuestros productos</span></h2>
+            </div>
+
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    
+                    <div class="swiper-slide">
+                        <img src="img_carrusell3d/EspeciasCondimentos.png" alt="Especias">
+                        <div class="info-slide">
+                            <h3>Especias</h3>
+                            <p>y Condimentos</p>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <img src="img_carrusell3d/HierbasInfusiones.png" alt="Hierbas">
+                        <div class="info-slide">
+                            <h3>Hierbas</h3>
+                            <p>e Infusiones</p>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <img src="img_carrusell3d/FrutosSecos.png" alt="Frutos Secos">
+                        <div class="info-slide">
+                            <h3>Frutos</h3>
+                            <p>Secos</p>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <img src="img_carrusell3d/GranoSemillas.png" alt="Semillas">
+                        <div class="info-slide">
+                            <h3>Granos</h3>
+                            <p>y Semillas</p>
+                        </div>
+                    </div>
+
+                     <div class="swiper-slide">
+                        <img src="img_carrusell3d/HierbasInfusiones.png" alt="Mix">
+                        <div class="info-slide">
+                            <h3>Mix</h3>
+                            <p>de Frutos</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="script.js"></script>
+
 </body>
 </html>

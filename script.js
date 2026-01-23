@@ -34,3 +34,107 @@ lista.appendChild(item);
 });
   })
 .catch(error => console.error('Error cargando datos:', error));
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const btnMenu = document.getElementById('mobile-menu-btn');
+    const mobileNav = document.getElementById('mobile-nav');
+
+    // Función para alternar el menú
+    btnMenu.addEventListener('click', () => {
+        mobileNav.classList.toggle('active');
+    });
+});
+
+
+// --- MENÚ MÓVIL ---
+document.addEventListener('DOMContentLoaded', () => {
+    const btnMenu = document.getElementById('mobile-menu-btn');
+    const mobileNav = document.getElementById('mobile-nav');
+    if(btnMenu && mobileNav){
+        btnMenu.addEventListener('click', () => {
+            mobileNav.classList.toggle('active');
+        });
+    }
+});
+
+// --- SLIDER PRINCIPAL (BANNER) ---
+let slideIndex = 0;
+let slides = document.querySelectorAll(".slider-wrapper .slide");
+let dots = document.querySelectorAll(".dot");
+let timer;
+
+if(slides.length > 0){
+    showSlides(slideIndex);
+    startAutoSlide();
+}
+
+function showSlides(n) {
+    if (n >= slides.length) slideIndex = 0;
+    if (n < 0) slideIndex = slides.length - 1;
+    
+    slides.forEach(slide => slide.style.display = "none");
+    dots.forEach(dot => dot.classList.remove("active"));
+    
+    slides[slideIndex].style.display = "block";
+    dots[slideIndex].classList.add("active");
+}
+
+function moveSlide(n) {
+    clearInterval(timer);
+    slideIndex += n;
+    showSlides(slideIndex);
+    startAutoSlide();
+}
+
+function currentSlide(n) {
+    clearInterval(timer);
+    slideIndex = n;
+    showSlides(slideIndex);
+    startAutoSlide();
+}
+
+function startAutoSlide() {
+    timer = setInterval(() => {
+        slideIndex++;
+        showSlides(slideIndex);
+    }, 4000);
+}
+
+/* --- CONFIGURACIÓN CARRUSEL 3D (SWIPER) --- */
+/* ¡AQUÍ ESTÁ LA MAGIA! NO CAMBIES ESTOS VALORES */
+/* --- CONFIGURACIÓN CARRUSEL 3D (ESTABILIZADA) --- */
+
+var swiper = new Swiper(".mySwiper", {
+    effect: "coverflow",
+    grabCursor: true,
+    centeredSlides: true,
+    
+    /* CAMBIO CLAVE 1: Usamos '3' en lugar de 'auto'.
+       Esto fuerza la simetría perfecta: 1 al centro, 1 a cada lado. */
+    slidesPerView: 3, 
+    
+    loop: true, // Ahora funcionará perfecto porque duplicaste los ítems
+    
+    coverflowEffect: {
+        rotate: 30,         /* Bajamos la rotación para que no se vea tan "caótico" */
+        stretch: 10,        /* CAMBIO CLAVE 2: Pon 0 o 10 positivo para separarlas un poco y ordenarlas */
+        depth: 200,         /* Profundidad estándar */
+        modifier: 1,
+        slideShadows: true,
+    },
+    
+    pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+    },
+    
+    autoplay: {
+        delay: 2000,
+        disableOnInteraction: false,
+    },
+    
+    /* Esto ayuda a que el clic sea preciso */
+    slideToClickedSlide: true, 
+});
