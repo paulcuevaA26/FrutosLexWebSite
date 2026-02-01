@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Carrusel 3D Moderno</title>
+    <style>
+        :root {
+            --carrousel-radius: 300px;
+            --item-width: 200px;
+            --item-height: 250px;
+        }
+
+        body {
+            background: #0f0f0f;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            font-family: sans-serif;
+        }
+
+        .container {
+            perspective: 1200px;
+            width: var(--item-width);
+            height: var(--item-height);
+            position: relative;
+        }
+
+        .carousel {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            transform-style: preserve-3d;
+            transition: transform 1s ease-in-out;
+            /* Smooth transition */
+        }
+
+        .item {
+            position: absolute;
+            width: var(--item-width);
+            height: var(--item-height);
+            left: 0;
+            top: 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Nav Buttons */
+        .nav-btn {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            padding: 15px 20px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            z-index: 1000;
+            transition: 0.3s;
+            user-select: none;
+        }
+
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: white;
+        }
+
+        .prev-btn {
+            left: 40px;
+        }
+
+        .next-btn {
+            right: 40px;
+        }
+
+        /* Generación de posiciones para 7 elementos */
+        /* Ángulo = 360 / 7 ≈ 51.42deg */
+        .item:nth-child(1) {
+            transform: rotateY(0deg) translateZ(var(--carrousel-radius));
+        }
+
+        .item:nth-child(2) {
+            transform: rotateY(51.42deg) translateZ(var(--carrousel-radius));
+        }
+
+        .item:nth-child(3) {
+            transform: rotateY(102.84deg) translateZ(var(--carrousel-radius));
+        }
+
+        .item:nth-child(4) {
+            transform: rotateY(154.26deg) translateZ(var(--carrousel-radius));
+        }
+
+        .item:nth-child(5) {
+            transform: rotateY(205.68deg) translateZ(var(--carrousel-radius));
+        }
+
+        .item:nth-child(6) {
+            transform: rotateY(257.1deg) translateZ(var(--carrousel-radius));
+        }
+
+        .item:nth-child(7) {
+            transform: rotateY(308.52deg) translateZ(var(--carrousel-radius));
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="carousel" id="carousel">
+            <div class="item"><img src="https://picsum.photos/400/500?random=1" alt="1"></div>
+            <div class="item"><img src="https://picsum.photos/400/500?random=2" alt="2"></div>
+            <div class="item"><img src="https://picsum.photos/400/500?random=3" alt="3"></div>
+            <div class="item"><img src="https://picsum.photos/400/500?random=4" alt="4"></div>
+            <div class="item"><img src="https://picsum.photos/400/500?random=5" alt="5"></div>
+            <div class="item"><img src="https://picsum.photos/400/500?random=6" alt="6"></div>
+            <div class="item"><img src="https://picsum.photos/400/500?random=7" alt="7"></div>
+        </div>
+    </div>
+
+    <!-- Flechas de navegación -->
+    <button class="nav-btn prev-btn" onclick="rotate('p')">&#10094;</button>
+    <button class="nav-btn next-btn" onclick="rotate('n')">&#10095;</button>
+
+    <script>
+        var carousel = document.getElementById("carousel");
+        var currdeg = 0;
+        var angle = 360 / 7; // 51.42 degrees
+
+        function rotate(direction) {
+            if (direction == "n") {
+                currdeg -= angle;
+            }
+            if (direction == "p") {
+                currdeg += angle;
+            }
+            carousel.style.transform = "rotateY(" + currdeg + "deg)";
+        }
+    </script>
+
+</body>
+
+</html>
